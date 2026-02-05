@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { geminiService } from './services/geminiService';
 import { Message, DashboardData } from './types';
@@ -218,12 +217,12 @@ const DEFAULT_CSV = `objectid,kategori,komponen,zon,kod_negeri,negeri,rancangan_
 211,Program Pengurusan Risiko Geobencana,Program CBDRM,Zon Utara,2,KEDAH,RTD Yan
 212,Program Pengurusan Risiko Geobencana,Program Kesedaran awam selain CBDRM,Zon Timur,6,PAHANG,RTD Temerloh
 213,Program Pengurusan Risiko Geobencana,Program Kesedaran awam selain CBDRM,Zon Utara,2,KEDAH,RTD Baling
-214,Program Pengurusan Risiko Geobencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,3,KELANTAN,RTMD Ketereh
-215,Program Pengurusan Risiko Geobencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,11,TERENGGANU,RTD H.Terengganu
-216,Program Pengurusan Risiko Geobencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,11,TERENGGANU,RTD Marang
-217,Program Pengurusan Risiko Geobencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,6,PAHANG,RTD Bera
-218,Program Pengurusan Risiko Geobencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,6,PAHANG,RTMD Lipis
-219,Program Pengurusan Risiko Geobencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Utara,2,KEDAH,RTD Yan
+214,Program Pengurusan Risiko Bencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,3,KELANTAN,RTMD Ketereh
+215,Program Pengurusan Risiko Bencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,11,TERENGGANU,RTD H.Terengganu
+216,Program Pengurusan Risiko Bencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,11,TERENGGANU,RTD Marang
+217,Program Pengurusan Risiko Bencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,6,PAHANG,RTD Bera
+218,Program Pengurusan Risiko Bencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Timur,6,PAHANG,RTMD Lipis
+219,Program Pengurusan Risiko Bencana,Kajiselidik Bandar Berdaya Tahan Bencana,Zon Utara,2,KEDAH,RTD Yan
 220,Mitigasi Berstruktur (MB),Banjir (MB),Zon Timur,3,KELANTAN,RTJ Pasir Putih
 221,Mitigasi Berstruktur (MB),Banjir (MB),Zon Timur,3,KELANTAN,RTMD Ketereh
 222,Mitigasi Berstruktur (MB),Banjir (MB),Zon Timur,3,KELANTAN,RTJ Tumpat
@@ -249,7 +248,7 @@ const DEFAULT_CSV = `objectid,kategori,komponen,zon,kod_negeri,negeri,rancangan_
 242,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,1,JOHOR,RT MBIP
 243,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,1,JOHOR,RTD Kota Tinggi
 244,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,4,MELAKA,RTMP Alor Gajah
-245,Mitigasi Berstructured (MB),Banjir (MB),Zon Selatan,4,MELAKA,RT MPHTJ
+245,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,4,MELAKA,RT MPHTJ
 246,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,4,MELAKA,RTMP Jasin
 247,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,5,NEGERI SEMBILAN,RTD Rembau
 248,Mitigasi Berstruktur (MB),Banjir (MB),Zon Selatan,5,NEGERI SEMBILAN,RTD Jelebu
@@ -260,7 +259,7 @@ const DEFAULT_CSV = `objectid,kategori,komponen,zon,kod_negeri,negeri,rancangan_
 253,Mitigasi Berstruktur (MB),Hakisan Pantai (MB),Zon Tengah,10,SELANGOR,RTMP Kuala Selangor
 254,Mitigasi Berstruktur (MB),Hakisan Pantai (MB),Zon Tengah,10,SELANGOR,RTD Sabak Bernam
 255,Mitigasi Berstruktur (MB),Hakisan Pantai (MB),Zon Utara,2,KEDAH,RTD Yan
-256,Mitigasi Berstruktur (MB),Hakisan Pantai (MB),Zon Selatan,1,JOHOR,RTD Kota Tinggi
+256,Mitigasi Berstructured (MB),Hakisan Pantai (MB),Zon Selatan,1,JOHOR,RTD Kota Tinggi
 257,Mitigasi Berstruktur (MB),Hakisan Pantai (MB),Zon Selatan,4,MELAKA,RTMP Alor Gajah
 258,Mitigasi Berstruktur (MB),Hakisan dan runtuhan tebing sungai (MB),Zon Timur,11,TERENGGANU,RTD Setiu
 259,Mitigasi Berstruktur (MB),Hakisan dan runtuhan tebing sungai (MB),Zon Timur,11,TERENGGANU,RTD H.Terengganu
@@ -303,7 +302,7 @@ const DEFAULT_CSV = `objectid,kategori,komponen,zon,kod_negeri,negeri,rancangan_
 296,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Tengah,8,PERAK,RTD Mualim
 297,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Tengah,8,PERAK,RTD Hilir Perak
 298,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Tengah,10,SELANGOR,RTMP Klang
-299,Mitigasi Tidak Berstructured (MTB),Banjir (MTB),Zon Tengah,10,SELANGOR,RTD Sabak Bernam
+299,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Tengah,10,SELANGOR,RTD Sabak Bernam
 300,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Utara,2,KEDAH,RTD Pendang
 301,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Utara,2,KEDAH,RTD Baling
 302,Mitigasi Tidak Berstruktur (MTB),Banjir (MTB),Zon Utara,2,KEDAH,RTD Padang Terap
@@ -365,6 +364,7 @@ const DEFAULT_CSV = `objectid,kategori,komponen,zon,kod_negeri,negeri,rancangan_
 
 const parseCSV = (csv: string) => {
   const lines = csv.split('\n');
+  if (lines.length < 2) return [];
   const headers = lines[0].split(',');
   return lines.slice(1).map(line => {
     const values = line.split(',');
@@ -379,7 +379,7 @@ const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [activeData, setActiveData] = useState<DashboardData | null>({
+  const [activeData] = useState<DashboardData | null>({
     name: 'Disaster_Risk_Data.csv',
     content: DEFAULT_CSV,
     type: 'csv',
@@ -421,7 +421,9 @@ const App: React.FC = () => {
         try {
           chartData = JSON.parse(match[1]);
           cleanText = response.replace(chartRegex, '').trim();
-        } catch (e) {}
+        } catch (e) {
+          console.error("Chart Parse Error:", e);
+        }
       }
 
       setMessages(prev => [...prev, {
@@ -433,6 +435,12 @@ const App: React.FC = () => {
       }]);
     } catch (error) {
       console.error("Analysis Error:", error);
+      setMessages(prev => [...prev, {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Maaf, sistem mengalami ralat semasa memproses data anda. Sila cuba sebentar lagi.",
+        timestamp: new Date()
+      }]);
     } finally {
       setIsLoading(false);
     }
@@ -443,8 +451,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-900 text-emerald-50 font-sans">
-      {/* Sleek Header */}
+    <div className="flex flex-col h-screen bg-slate-900 text-emerald-50 font-sans overflow-hidden">
       <header className="bg-slate-950/90 backdrop-blur-md border-b border-emerald-900/20 p-4 z-20 sticky top-0">
         <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -469,7 +476,6 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Analysis Stream */}
       <main className="flex-1 overflow-y-auto p-4 md:p-6 space-y-8 bg-slate-900/50 custom-scrollbar flex flex-col items-center">
         <div className="max-w-4xl w-full flex-1 flex flex-col gap-8 pb-32">
           {messages.length === 0 && (
@@ -536,7 +542,6 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Futuristic Command Input */}
       <footer className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent z-10">
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSendMessage} className="relative group">
